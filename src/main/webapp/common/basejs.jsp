@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!-- jQuery -->
 <script src="${basePath}/admin/vendor/jquery/jquery.min.js"></script>
+<%--<script src="${basePath}/js/jquery-migrate-3.0.0.min.js"></script>--%>
+<%--<script src="${basePath}/js/jquery-migrate-1.4.1.min.js"></script>--%>
 <!-- Bootstrap Core JavaScript -->
 <script src="${basePath}/admin/vendor/bootstrap/js/bootstrap.min.js"></script>
 <!-- Metis Menu Plugin JavaScript -->

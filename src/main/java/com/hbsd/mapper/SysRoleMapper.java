@@ -2,9 +2,12 @@ package com.hbsd.mapper;
 
 import com.hbsd.domain.SysRole;
 import com.hbsd.domain.SysRoleExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
+@Repository
 public interface SysRoleMapper {
     int countByExample(SysRoleExample example);
 
