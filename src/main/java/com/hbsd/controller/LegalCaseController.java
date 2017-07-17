@@ -36,8 +36,8 @@ public class LegalCaseController {
     @ResponseBody
     public PageInfo getPage(@RequestParam(defaultValue = "1") Integer pageNumber,
                             @RequestParam(defaultValue = "10") Integer pageSize,
-                            String caseNo,String caseName,String beginDate,String endDate,Integer caseType) {
-        return legalCaseService.getPage(pageNumber, pageSize,caseNo,caseName,beginDate,endDate, caseType);
+                            String caseNo, String caseName, String beginDate, String endDate, Integer caseType) {
+        return legalCaseService.getPage(pageNumber, pageSize, caseNo, caseName, beginDate, endDate, caseType);
     }
 
     @RequestMapping("/delete")
@@ -51,7 +51,7 @@ public class LegalCaseController {
     public String toSaveOrUpdateView(Integer id, ModelMap modelMap) {
         if (id != null) {
             LegalCase legalCase = legalCaseService.selectByPrimaryKey(id);
-            modelMap.addAttribute("legalCase",legalCase);
+            modelMap.addAttribute("legalCase", legalCase);
         }
         return "legalCaseSaveOrUpdate";
     }
