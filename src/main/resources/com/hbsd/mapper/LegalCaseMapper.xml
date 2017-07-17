@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hbsd.mapper.LegalCaseMapper" >
+  <resultMap id="BaseResultMap" type="com.hbsd.domain.LegalCase" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="case_state" property="caseState" jdbcType="INTEGER" />
+    <result column="case_no" property="caseNo" jdbcType="VARCHAR" />
+    <result column="case_name" property="caseName" jdbcType="VARCHAR" />
+    <result column="case_nature" property="caseNature" jdbcType="VARCHAR" />
+    <result column="case_type" property="caseType" jdbcType="INTEGER" />
+    <result column="case_type_name" property="caseTypeName" jdbcType="VARCHAR" />
+    <result column="case_steps" property="caseSteps" jdbcType="INTEGER" />
+    <result column="case_steps_name" property="caseStepsName" jdbcType="VARCHAR" />
+    <result column="case_steps_date" property="caseStepsDate" jdbcType="VARCHAR" />
+    <result column="case_people_id" property="casePeopleId" jdbcType="INTEGER" />
+    <result column="case_first_police_id" property="caseFirstPoliceId" jdbcType="INTEGER" />
+    <result column="case_second_police_id" property="caseSecondPoliceId" jdbcType="INTEGER" />
+    <result column="case_legal_police_id" property="caseLegalPoliceId" jdbcType="INTEGER" />
+    <result column="case_create_date" property="caseCreateDate" jdbcType="VARCHAR" />
+    <result column="case_create_police_id" property="caseCreatePoliceId" jdbcType="INTEGER" />
+    <result column="case_create_police_name" property="caseCreatePoliceName" jdbcType="VARCHAR" />
+    <result column="case_custom" property="caseCustom" jdbcType="INTEGER" />
+    <result column="case_complete" property="caseComplete" jdbcType="INTEGER" />
+    <result column="case_remand" property="caseRemand" jdbcType="INTEGER" />
+    <result column="case_supervision" property="caseSupervision" jdbcType="INTEGER" />
+    <result column="case_fugitive" property="caseFugitive" jdbcType="INTEGER" />
+    <result column="case_explain" property="caseExplain" jdbcType="VARCHAR" />
+    <result column="case_admin_hold_day" property="caseAdminHoldDay" jdbcType="INTEGER" />
+    <result column="case_admin_money" property="caseAdminMoney" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, case_state, case_no, case_name, case_nature, case_type, case_type_name, case_steps, 
+    case_steps_name, case_steps_date, case_people_id, case_first_police_id, case_second_police_id, 
+    case_legal_police_id, case_create_date, case_create_police_id, case_create_police_name, 
+    case_custom, case_complete, case_remand, case_supervision, case_fugitive, case_explain, 
+    case_admin_hold_day, case_admin_money
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.hbsd.domain.LegalCaseExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from legal_case
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from legal_case
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from legal_case
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.hbsd.domain.LegalCaseExample" >
+    delete from legal_case
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hbsd.domain.LegalCase" >
+    insert into legal_case (id, case_state, case_no, 
+      case_name, case_nature, case_type, 
+      case_type_name, case_steps, case_steps_name, 
+      case_steps_date, case_people_id, case_first_police_id, 
+      case_second_police_id, case_legal_police_id, 
+      case_create_date, case_create_police_id, case_create_police_name, 
+      case_custom, case_complete, case_remand, 
+      case_supervision, case_fugitive, case_explain, 
+      case_admin_hold_day, case_admin_money)
+    values (#{id,jdbcType=INTEGER}, #{caseState,jdbcType=INTEGER}, #{caseNo,jdbcType=VARCHAR}, 
+      #{caseName,jdbcType=VARCHAR}, #{caseNature,jdbcType=VARCHAR}, #{caseType,jdbcType=INTEGER}, 
+      #{caseTypeName,jdbcType=VARCHAR}, #{caseSteps,jdbcType=INTEGER}, #{caseStepsName,jdbcType=VARCHAR}, 
+      #{caseStepsDate,jdbcType=VARCHAR}, #{casePeopleId,jdbcType=INTEGER}, #{caseFirstPoliceId,jdbcType=INTEGER}, 
+      #{caseSecondPoliceId,jdbcType=INTEGER}, #{caseLegalPoliceId,jdbcType=INTEGER}, 
+      #{caseCreateDate,jdbcType=VARCHAR}, #{caseCreatePoliceId,jdbcType=INTEGER}, #{caseCreatePoliceName,jdbcType=VARCHAR}, 
+      #{caseCustom,jdbcType=INTEGER}, #{caseComplete,jdbcType=INTEGER}, #{caseRemand,jdbcType=INTEGER}, 
+      #{caseSupervision,jdbcType=INTEGER}, #{caseFugitive,jdbcType=INTEGER}, #{caseExplain,jdbcType=VARCHAR}, 
+      #{caseAdminHoldDay,jdbcType=INTEGER}, #{caseAdminMoney,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hbsd.domain.LegalCase" >
+    insert into legal_case
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="caseState != null" >
+        case_state,
+      </if>
+      <if test="caseNo != null" >
+        case_no,
+      </if>
+      <if test="caseName != null" >
+        case_name,
+      </if>
+      <if test="caseNature != null" >
+        case_nature,
+      </if>
+      <if test="caseType != null" >
+        case_type,
+      </if>
+      <if test="caseTypeName != null" >
+        case_type_name,
+      </if>
+      <if test="caseSteps != null" >
+        case_steps,
+      </if>
+      <if test="caseStepsName != null" >
+        case_steps_name,
+      </if>
+      <if test="caseStepsDate != null" >
+        case_steps_date,
+      </if>
+      <if test="casePeopleId != null" >
+        case_people_id,
+      </if>
+      <if test="caseFirstPoliceId != null" >
+        case_first_police_id,
+      </if>
+      <if test="caseSecondPoliceId != null" >
+        case_second_police_id,
+      </if>
+      <if test="caseLegalPoliceId != null" >
+        case_legal_police_id,
+      </if>
+      <if test="caseCreateDate != null" >
+        case_create_date,
+      </if>
+      <if test="caseCreatePoliceId != null" >
+        case_create_police_id,
+      </if>
+      <if test="caseCreatePoliceName != null" >
+        case_create_police_name,
+      </if>
+      <if test="caseCustom != null" >
+        case_custom,
+      </if>
+      <if test="caseComplete != null" >
+        case_complete,
+      </if>
+      <if test="caseRemand != null" >
+        case_remand,
+      </if>
+      <if test="caseSupervision != null" >
+        case_supervision,
+      </if>
+      <if test="caseFugitive != null" >
+        case_fugitive,
+      </if>
+      <if test="caseExplain != null" >
+        case_explain,
+      </if>
+      <if test="caseAdminHoldDay != null" >
+        case_admin_hold_day,
+      </if>
+      <if test="caseAdminMoney != null" >
+        case_admin_money,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="caseState != null" >
+        #{caseState,jdbcType=INTEGER},
+      </if>
+      <if test="caseNo != null" >
+        #{caseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="caseName != null" >
+        #{caseName,jdbcType=VARCHAR},
+      </if>
+      <if test="caseNature != null" >
+        #{caseNature,jdbcType=VARCHAR},
+      </if>
+      <if test="caseType != null" >
+        #{caseType,jdbcType=INTEGER},
+      </if>
+      <if test="caseTypeName != null" >
+        #{caseTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="caseSteps != null" >
+        #{caseSteps,jdbcType=INTEGER},
+      </if>
+      <if test="caseStepsName != null" >
+        #{caseStepsName,jdbcType=VARCHAR},
+      </if>
+      <if test="caseStepsDate != null" >
+        #{caseStepsDate,jdbcType=VARCHAR},
+      </if>
+      <if test="casePeopleId != null" >
+        #{casePeopleId,jdbcType=INTEGER},
+      </if>
+      <if test="caseFirstPoliceId != null" >
+        #{caseFirstPoliceId,jdbcType=INTEGER},
+      </if>
+      <if test="caseSecondPoliceId != null" >
+        #{caseSecondPoliceId,jdbcType=INTEGER},
+      </if>
+      <if test="caseLegalPoliceId != null" >
+        #{caseLegalPoliceId,jdbcType=INTEGER},
+      </if>
+      <if test="caseCreateDate != null" >
+        #{caseCreateDate,jdbcType=VARCHAR},
+      </if>
+      <if test="caseCreatePoliceId != null" >
+        #{caseCreatePoliceId,jdbcType=INTEGER},
+      </if>
+      <if test="caseCreatePoliceName != null" >
+        #{caseCreatePoliceName,jdbcType=VARCHAR},
+      </if>
+      <if test="caseCustom != null" >
+        #{caseCustom,jdbcType=INTEGER},
+      </if>
+      <if test="caseComplete != null" >
+        #{caseComplete,jdbcType=INTEGER},
+      </if>
+      <if test="caseRemand != null" >
+        #{caseRemand,jdbcType=INTEGER},
+      </if>
+      <if test="caseSupervision != null" >
+        #{caseSupervision,jdbcType=INTEGER},
+      </if>
+      <if test="caseFugitive != null" >
+        #{caseFugitive,jdbcType=INTEGER},
+      </if>
+      <if test="caseExplain != null" >
+        #{caseExplain,jdbcType=VARCHAR},
+      </if>
+      <if test="caseAdminHoldDay != null" >
+        #{caseAdminHoldDay,jdbcType=INTEGER},
+      </if>
+      <if test="caseAdminMoney != null" >
+        #{caseAdminMoney,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hbsd.domain.LegalCaseExample" resultType="java.lang.Integer" >
+    select count(*) from legal_case
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update legal_case
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.caseState != null" >
+        case_state = #{record.caseState,jdbcType=INTEGER},
+      </if>
+      <if test="record.caseNo != null" >
+        case_no = #{record.caseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caseName != null" >
+        case_name = #{record.caseName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caseNature != null" >
+        case_nature = #{record.caseNature,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caseType != null" >
+        case_type = #{record.caseType,jdbcType=INTEGER},
+      </if>
+      <if test="record.caseTypeName != null" >
+        case_type_name = #{record.caseTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caseSteps != null" >
+        case_steps = #{record.caseSteps,jdbcType=INTEGER},
+      </if>
+      <if test="record.caseStepsName != null" >
+        case_steps_name = #{record.caseStepsName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caseStepsDate != null" >
+        case_steps_date = #{record.caseStepsDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.casePeopleId != null" >
+        case_people_id = #{record.casePeopleId,jdbcType=INTEGER},
+      </if>
+      <if test="record.caseFirstPoliceId != null" >
+        case_first_police_id = #{record.caseFirstPoliceId,jdbcType=INTEGER},
+      </if>
+      <if test="record.caseSecondPoliceId != null" >
+        case_second_police_id = #{record.caseSecondPoliceId,jdbcType=INTEGER},
+      </if>
+      <if test="record.caseLegalPoliceId != null" >
+        case_legal_police_id = #{record.caseLegalPoliceId,jdbcType=INTEGER},
+      </if>
+      <if test="record.caseCreateDate != null" >
+        case_create_date = #{record.caseCreateDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caseCreatePoliceId != null" >
+        case_create_police_id = #{record.caseCreatePoliceId,jdbcType=INTEGER},
+      </if>
+      <if test="record.caseCreatePoliceName != null" >
+        case_create_police_name = #{record.caseCreatePoliceName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caseCustom != null" >
+        case_custom = #{record.caseCustom,jdbcType=INTEGER},
+      </if>
+      <if test="record.caseComplete != null" >
+        case_complete = #{record.caseComplete,jdbcType=INTEGER},
+      </if>
+      <if test="record.caseRemand != null" >
+        case_remand = #{record.caseRemand,jdbcType=INTEGER},
+      </if>
+      <if test="record.caseSupervision != null" >
+        case_supervision = #{record.caseSupervision,jdbcType=INTEGER},
+      </if>
+      <if test="record.caseFugitive != null" >
+        case_fugitive = #{record.caseFugitive,jdbcType=INTEGER},
+      </if>
+      <if test="record.caseExplain != null" >
+        case_explain = #{record.caseExplain,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caseAdminHoldDay != null" >
+        case_admin_hold_day = #{record.caseAdminHoldDay,jdbcType=INTEGER},
+      </if>
+      <if test="record.caseAdminMoney != null" >
+        case_admin_money = #{record.caseAdminMoney,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update legal_case
+    set id = #{record.id,jdbcType=INTEGER},
+      case_state = #{record.caseState,jdbcType=INTEGER},
+      case_no = #{record.caseNo,jdbcType=VARCHAR},
+      case_name = #{record.caseName,jdbcType=VARCHAR},
+      case_nature = #{record.caseNature,jdbcType=VARCHAR},
+      case_type = #{record.caseType,jdbcType=INTEGER},
+      case_type_name = #{record.caseTypeName,jdbcType=VARCHAR},
+      case_steps = #{record.caseSteps,jdbcType=INTEGER},
+      case_steps_name = #{record.caseStepsName,jdbcType=VARCHAR},
+      case_steps_date = #{record.caseStepsDate,jdbcType=VARCHAR},
+      case_people_id = #{record.casePeopleId,jdbcType=INTEGER},
+      case_first_police_id = #{record.caseFirstPoliceId,jdbcType=INTEGER},
+      case_second_police_id = #{record.caseSecondPoliceId,jdbcType=INTEGER},
+      case_legal_police_id = #{record.caseLegalPoliceId,jdbcType=INTEGER},
+      case_create_date = #{record.caseCreateDate,jdbcType=VARCHAR},
+      case_create_police_id = #{record.caseCreatePoliceId,jdbcType=INTEGER},
+      case_create_police_name = #{record.caseCreatePoliceName,jdbcType=VARCHAR},
+      case_custom = #{record.caseCustom,jdbcType=INTEGER},
+      case_complete = #{record.caseComplete,jdbcType=INTEGER},
+      case_remand = #{record.caseRemand,jdbcType=INTEGER},
+      case_supervision = #{record.caseSupervision,jdbcType=INTEGER},
+      case_fugitive = #{record.caseFugitive,jdbcType=INTEGER},
+      case_explain = #{record.caseExplain,jdbcType=VARCHAR},
+      case_admin_hold_day = #{record.caseAdminHoldDay,jdbcType=INTEGER},
+      case_admin_money = #{record.caseAdminMoney,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hbsd.domain.LegalCase" >
+    update legal_case
+    <set >
+      <if test="caseState != null" >
+        case_state = #{caseState,jdbcType=INTEGER},
+      </if>
+      <if test="caseNo != null" >
+        case_no = #{caseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="caseName != null" >
+        case_name = #{caseName,jdbcType=VARCHAR},
+      </if>
+      <if test="caseNature != null" >
+        case_nature = #{caseNature,jdbcType=VARCHAR},
+      </if>
+      <if test="caseType != null" >
+        case_type = #{caseType,jdbcType=INTEGER},
+      </if>
+      <if test="caseTypeName != null" >
+        case_type_name = #{caseTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="caseSteps != null" >
+        case_steps = #{caseSteps,jdbcType=INTEGER},
+      </if>
+      <if test="caseStepsName != null" >
+        case_steps_name = #{caseStepsName,jdbcType=VARCHAR},
+      </if>
+      <if test="caseStepsDate != null" >
+        case_steps_date = #{caseStepsDate,jdbcType=VARCHAR},
+      </if>
+      <if test="casePeopleId != null" >
+        case_people_id = #{casePeopleId,jdbcType=INTEGER},
+      </if>
+      <if test="caseFirstPoliceId != null" >
+        case_first_police_id = #{caseFirstPoliceId,jdbcType=INTEGER},
+      </if>
+      <if test="caseSecondPoliceId != null" >
+        case_second_police_id = #{caseSecondPoliceId,jdbcType=INTEGER},
+      </if>
+      <if test="caseLegalPoliceId != null" >
+        case_legal_police_id = #{caseLegalPoliceId,jdbcType=INTEGER},
+      </if>
+      <if test="caseCreateDate != null" >
+        case_create_date = #{caseCreateDate,jdbcType=VARCHAR},
+      </if>
+      <if test="caseCreatePoliceId != null" >
+        case_create_police_id = #{caseCreatePoliceId,jdbcType=INTEGER},
+      </if>
+      <if test="caseCreatePoliceName != null" >
+        case_create_police_name = #{caseCreatePoliceName,jdbcType=VARCHAR},
+      </if>
+      <if test="caseCustom != null" >
+        case_custom = #{caseCustom,jdbcType=INTEGER},
+      </if>
+      <if test="caseComplete != null" >
+        case_complete = #{caseComplete,jdbcType=INTEGER},
+      </if>
+      <if test="caseRemand != null" >
+        case_remand = #{caseRemand,jdbcType=INTEGER},
+      </if>
+      <if test="caseSupervision != null" >
+        case_supervision = #{caseSupervision,jdbcType=INTEGER},
+      </if>
+      <if test="caseFugitive != null" >
+        case_fugitive = #{caseFugitive,jdbcType=INTEGER},
+      </if>
+      <if test="caseExplain != null" >
+        case_explain = #{caseExplain,jdbcType=VARCHAR},
+      </if>
+      <if test="caseAdminHoldDay != null" >
+        case_admin_hold_day = #{caseAdminHoldDay,jdbcType=INTEGER},
+      </if>
+      <if test="caseAdminMoney != null" >
+        case_admin_money = #{caseAdminMoney,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hbsd.domain.LegalCase" >
+    update legal_case
+    set case_state = #{caseState,jdbcType=INTEGER},
+      case_no = #{caseNo,jdbcType=VARCHAR},
+      case_name = #{caseName,jdbcType=VARCHAR},
+      case_nature = #{caseNature,jdbcType=VARCHAR},
+      case_type = #{caseType,jdbcType=INTEGER},
+      case_type_name = #{caseTypeName,jdbcType=VARCHAR},
+      case_steps = #{caseSteps,jdbcType=INTEGER},
+      case_steps_name = #{caseStepsName,jdbcType=VARCHAR},
+      case_steps_date = #{caseStepsDate,jdbcType=VARCHAR},
+      case_people_id = #{casePeopleId,jdbcType=INTEGER},
+      case_first_police_id = #{caseFirstPoliceId,jdbcType=INTEGER},
+      case_second_police_id = #{caseSecondPoliceId,jdbcType=INTEGER},
+      case_legal_police_id = #{caseLegalPoliceId,jdbcType=INTEGER},
+      case_create_date = #{caseCreateDate,jdbcType=VARCHAR},
+      case_create_police_id = #{caseCreatePoliceId,jdbcType=INTEGER},
+      case_create_police_name = #{caseCreatePoliceName,jdbcType=VARCHAR},
+      case_custom = #{caseCustom,jdbcType=INTEGER},
+      case_complete = #{caseComplete,jdbcType=INTEGER},
+      case_remand = #{caseRemand,jdbcType=INTEGER},
+      case_supervision = #{caseSupervision,jdbcType=INTEGER},
+      case_fugitive = #{caseFugitive,jdbcType=INTEGER},
+      case_explain = #{caseExplain,jdbcType=VARCHAR},
+      case_admin_hold_day = #{caseAdminHoldDay,jdbcType=INTEGER},
+      case_admin_money = #{caseAdminMoney,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

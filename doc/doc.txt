@@ -1,0 +1,2 @@
+bootstrap-table:http://bootstrap-table.wenzhixin.net.cn/zh-cn/documentation/
+http://bootstrap-datepicker.readthedocs.io/en/latest/

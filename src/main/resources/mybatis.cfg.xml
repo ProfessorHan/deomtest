@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <!--Defaut:true-->
+        <setting name="cacheEnabled" value="true"/>
+        <!--Defaut:false-->
+        <setting name="lazyLoadingEnabled" value="false"/>
+        <!--是否与许单一语句返回多结果集,需要驱动支持 | Defaut:true-->
+        <setting name="multipleResultSetsEnabled" value="true"/>
+        <!--Defaut:true-->
+        <setting name="useColumnLabel" value="true"/>
+        <!--Defaut:false-->
+        <setting name="useGeneratedKeys" value="false"/>
+        <!--NONE,PARTIAL,FULL | Defaut:PARTIAL-->
+        <setting name="autoMappingBehavior" value="PARTIAL"/>
+        <!--NONE,WARNING,FAILING | Defaut:NONE-->
+        <setting name="autoMappingUnknownColumnBehavior" value="NONE"/>
+        <!--SIMPLE REUSE BATCH | Default:SIMPLE-->
+        <setting name="defaultExecutorType" value="SIMPLE"/>
+
+        <setting name="defaultFetchSize" value="1000000"/>
+        <!--允许在嵌套语句中使用分页 Defaut:false-->
+        <setting name="safeRowBoundsEnabled" value="false"/>
+        <!--驼峰 Defaut:false-->
+        <setting name="mapUnderscoreToCamelCase" value="false"/>
+        <!--SESSION|STATEMENT Default:SESSION-->
+        <setting name="localCacheScope" value="SESSION"/>
+        <!-- NULL, VARCHAR and OTHER|Defaut:OTHER-->
+        <setting name="jdbcTypeForNull" value="OTHER"/>
+        <!--延迟加载触发方法|Default:equals,clone,hashCode,toString-->
+        <setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString"/>
+
+    </settings>
+
+
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
+    </plugins>
+
+</configuration>
