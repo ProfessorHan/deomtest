@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50712
 File Encoding         : 65001
 
-Date: 2017-07-15 17:56:57
+Date: 2017-07-17 18:01:30
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -377,6 +377,84 @@ INSERT INTO `sys_app_user` VALUES ('04762c0b28b643939455c7800c2e2412', 'dsfsd', 
 INSERT INTO `sys_app_user` VALUES ('3faac8fe5c0241e593e0f9ea6f2d5870', 'dsfsdf', 'f1290186a5d0b1ceab27f4e77c0c5d68', 'wewe', '', '68f23fc0caee475bae8d52244dea8444', '', '', '1', '', '18767676767', '', '', '', '0', 'wqwe', 'qweqwe@qq.com');
 
 -- ----------------------------
+-- Table structure for sys_dept
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_dept`;
+CREATE TABLE `sys_dept` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增ID',
+  `name` varchar(255) NOT NULL,
+  `pid` int(11) DEFAULT NULL COMMENT '上级ID',
+  `director` int(11) DEFAULT NULL COMMENT '副局长ID',
+  `chief` int(11) DEFAULT NULL COMMENT '所长/科长',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of sys_dept
+-- ----------------------------
+INSERT INTO `sys_dept` VALUES ('1', '内丘县公安局案件管理中心', '0', '1', null);
+INSERT INTO `sys_dept` VALUES ('2', '内丘县公安局内丘镇派出所', '1', '2', '11');
+INSERT INTO `sys_dept` VALUES ('3', '内丘县公安局大孟村派出所', '1', '2', '13');
+INSERT INTO `sys_dept` VALUES ('4', '内丘县公安局金店派出所', '1', '2', '87');
+INSERT INTO `sys_dept` VALUES ('5', '内丘县公安局官庄派出所', '1', '2', '91');
+INSERT INTO `sys_dept` VALUES ('6', '内丘县公安局柳林派出所', '1', '2', '45');
+INSERT INTO `sys_dept` VALUES ('7', '内丘县公安局河渠派出所', '1', '2', '90');
+INSERT INTO `sys_dept` VALUES ('8', '内丘县公安局獐么派出所', '1', '2', '53');
+INSERT INTO `sys_dept` VALUES ('9', '内丘县公安局南赛派出所', '1', '2', '48');
+INSERT INTO `sys_dept` VALUES ('10', '内丘县公安局侯家庄派出所', '1', '2', '57');
+INSERT INTO `sys_dept` VALUES ('11', '内丘县公安局五郭派出所', '1', '2', '37');
+INSERT INTO `sys_dept` VALUES ('12', '内丘县公安局法制警察大队', '1', '29', '62');
+INSERT INTO `sys_dept` VALUES ('13', '内丘县公安局网络安全保卫大队', '1', '7', '224');
+INSERT INTO `sys_dept` VALUES ('14', '内丘县公安局经济犯罪侦查大队', '1', '8', '225');
+INSERT INTO `sys_dept` VALUES ('16', '内丘县公安局刑事警察大队', '1', '10', '223');
+INSERT INTO `sys_dept` VALUES ('17', '内丘县公安局刑事警察大队一中队', '1', '10', '69');
+INSERT INTO `sys_dept` VALUES ('18', '内丘县公安局刑事警察大队二中队', '1', '10', '24');
+INSERT INTO `sys_dept` VALUES ('19', '内丘县公安局刑事警察大队三中队', '1', '10', '209');
+INSERT INTO `sys_dept` VALUES ('20', '内丘县公安局刑事警察大队四中队', '1', '10', '204');
+INSERT INTO `sys_dept` VALUES ('21', '内丘县公安局治安警察大队', '1', '2', '216');
+INSERT INTO `sys_dept` VALUES ('22', '内丘县公安局食品药品安全保卫大队', '1', '8', '18');
+INSERT INTO `sys_dept` VALUES ('23', '内丘县公安局交通警察大队', '1', '230', '215');
+INSERT INTO `sys_dept` VALUES ('24', '内丘县公安局国内安全保卫大队', '1', '2', '210');
+INSERT INTO `sys_dept` VALUES ('25', '内丘县公安局禁毒警察大队', '1', '10', '222');
+
+-- ----------------------------
+-- Table structure for sys_dict
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_dict`;
+CREATE TABLE `sys_dict` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL COMMENT '名称',
+  `key` varchar(255) DEFAULT NULL,
+  `order` varchar(255) DEFAULT NULL COMMENT '类型',
+  `pid` int(11) DEFAULT NULL COMMENT '父ID',
+  `loc` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of sys_dict
+-- ----------------------------
+INSERT INTO `sys_dict` VALUES ('1', '职务名称', 'job', '0', '0', '1');
+INSERT INTO `sys_dict` VALUES ('2', '刑事案件', 'cycle', '0', '0', '2');
+INSERT INTO `sys_dict` VALUES ('3', '行政案件', 'cycle', '0', '0', '3');
+INSERT INTO `sys_dict` VALUES ('5', '局长', 'job', '1', '1', '1/5');
+INSERT INTO `sys_dict` VALUES ('6', '主管局长', 'job', '2', '1', '1/6');
+INSERT INTO `sys_dict` VALUES ('7', '所/队长', 'job', '3', '1', '1/7');
+INSERT INTO `sys_dict` VALUES ('8', '民警', 'job', '4', '1', '1/8');
+INSERT INTO `sys_dict` VALUES ('9', '刑事拘留', 'cycle', '1', '2', '2/9');
+INSERT INTO `sys_dict` VALUES ('10', '一类延长', 'cycle', '2', '2', '2/10');
+INSERT INTO `sys_dict` VALUES ('11', '二类延长', 'cycle', '3', '2', '2/11');
+INSERT INTO `sys_dict` VALUES ('12', '执行逮捕', 'cycle', '4', '2', '2/12');
+INSERT INTO `sys_dict` VALUES ('13', '取保候审', 'cycle', '5', '2', '2/13');
+INSERT INTO `sys_dict` VALUES ('14', '监视居住', 'cycle', '6', '2', '2/14');
+INSERT INTO `sys_dict` VALUES ('15', '移送起诉', 'cycle', '7', '2', '2/15');
+INSERT INTO `sys_dict` VALUES ('16', '一次退查', 'cycle', '8', '2', '2/16');
+INSERT INTO `sys_dict` VALUES ('17', '二次退查', 'cycle', '9', '2', '2/16');
+INSERT INTO `sys_dict` VALUES ('18', '行政处理', 'cycle', '10', '3', '3/18');
+INSERT INTO `sys_dict` VALUES ('19', '行政复议', 'cycle', '11', '3', '3/19');
+INSERT INTO `sys_dict` VALUES ('20', '行政诉讼', 'cycle', '12', '3', '3/20');
+
+-- ----------------------------
 -- Table structure for sys_dictionaries
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_dictionaries`;
@@ -479,34 +557,23 @@ INSERT INTO `sys_menu` VALUES ('21', '打印测试', 'tool/printTest.do', '9', '
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_role`;
 CREATE TABLE `sys_role` (
-  `ROLE_ID` varchar(100) NOT NULL,
-  `ROLE_NAME` varchar(100) DEFAULT NULL,
-  `RIGHTS` varchar(255) DEFAULT NULL,
-  `PARENT_ID` varchar(100) DEFAULT NULL,
-  `ADD_QX` varchar(255) DEFAULT NULL,
-  `DEL_QX` varchar(255) DEFAULT NULL,
-  `EDIT_QX` varchar(255) DEFAULT NULL,
-  `CHA_QX` varchar(255) DEFAULT NULL,
-  `QX_ID` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`ROLE_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(55) NOT NULL DEFAULT '',
+  `des` varchar(55) DEFAULT NULL,
+  `seq` int(11) DEFAULT '1',
+  `createdate` datetime DEFAULT NULL,
+  `status` int(11) DEFAULT '1' COMMENT '0-禁用  1-启用',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sys_role
 -- ----------------------------
-INSERT INTO `sys_role` VALUES ('1', '系统管理员', '4194294', '0', '1', '1', '1', '1', '1');
-INSERT INTO `sys_role` VALUES ('2', '超级管理员', '4194294', '1', '1048822', '50', '34', '54', '2');
-INSERT INTO `sys_role` VALUES ('3b51b380c7bc485a84db2376b45b4e88', '管理员C', '4194294', '1', '0', '0', '0', '0', '3b51b380c7bc485a84db2376b45b4e88');
-INSERT INTO `sys_role` VALUES ('4', '用户组', '118', '0', '0', '0', '0', '0', null);
-INSERT INTO `sys_role` VALUES ('55896f5ce3c0494fa6850775a4e29ff6', '特级会员', '498', '7', '1048630', '0', '0', '0', '55896f5ce3c0494fa6850775a4e29ff6');
-INSERT INTO `sys_role` VALUES ('6', '客户组', '18', '0', '1', '1', '1', '1', null);
-INSERT INTO `sys_role` VALUES ('68f23fc0caee475bae8d52244dea8444', '中级会员', '498', '7', '0', '0', '0', '0', '68f23fc0caee475bae8d52244dea8444');
-INSERT INTO `sys_role` VALUES ('7', '会员组', '498', '0', '0', '0', '0', '1', null);
-INSERT INTO `sys_role` VALUES ('7dfd8d1f7b6245d283217b7e63eec9b2', '管理员B', '4194294', '1', '246', '0', '0', '0', '7dfd8d1f7b6245d283217b7e63eec9b2');
-INSERT INTO `sys_role` VALUES ('ac66961adaa2426da4470c72ffeec117', '管理员A', '4194294', '1', '54', '54', '0', '246', 'ac66961adaa2426da4470c72ffeec117');
-INSERT INTO `sys_role` VALUES ('b0c77c29dfa140dc9b14a29c056f824f', '高级会员', '498', '7', '0', '0', '0', '0', 'b0c77c29dfa140dc9b14a29c056f824f');
-INSERT INTO `sys_role` VALUES ('e74f713314154c35bd7fc98897859fe3', '黄金客户', '18', '6', '1', '1', '1', '1', 'e74f713314154c35bd7fc98897859fe3');
-INSERT INTO `sys_role` VALUES ('f944a9df72634249bbcb8cb73b0c9b86', '初级会员', '498', '7', '1', '1', '1', '1', 'f944a9df72634249bbcb8cb73b0c9b86');
+INSERT INTO `sys_role` VALUES ('1', 'admin', '超级管理员', '1', '2016-11-24 00:00:00', '1');
+INSERT INTO `sys_role` VALUES ('2', '县局管理', '县局管理', '1', '2016-11-24 09:04:23', '1');
+INSERT INTO `sys_role` VALUES ('3', '所/队管理', '所/队管理', '1', '2017-05-11 17:13:58', '1');
+INSERT INTO `sys_role` VALUES ('11', '民警管理', '民警管理', '1', '2017-06-15 18:55:56', '1');
+INSERT INTO `sys_role` VALUES ('12', '超级管理员', '最高权限管理', '1', '2017-06-16 10:36:31', '1');
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -531,12 +598,11 @@ CREATE TABLE `sys_user` (
   `wx_uuid` varchar(50) COLLATE utf8_bin DEFAULT NULL,
   `group_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES ('0', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '系统管理员', null, '0', '0', '2017-07-13 16:15:50', '0', '2015-07-30 15:06:11', '2017-07-13 16:15:39', null, null, '1', '1', '', '1');
 INSERT INTO `sys_user` VALUES ('1', 'mxh', '81dc9bdb52d04dc20036dbd8313ed055', '孟小辉', null, '0', null, '2017-07-15 08:17:25', '0', '2017-02-14 10:54:16', '2017-07-15 08:17:25', null, null, '0', null, null, '1');
 INSERT INTO `sys_user` VALUES ('2', 'sn', '81dc9bdb52d04dc20036dbd8313ed055', '宋楠', null, '0', null, '2017-07-15 08:11:45', '0', '2017-02-14 10:54:55', '2017-07-15 08:11:45', null, null, '0', null, null, '1');
 INSERT INTO `sys_user` VALUES ('3', 'lys', '81dc9bdb52d04dc20036dbd8313ed055', '李艳盛', null, '0', null, '2017-07-11 07:44:01', '0', '2017-02-14 10:54:32', '2017-07-11 07:44:00', null, null, '0', null, null, '1');
@@ -562,6 +628,7 @@ INSERT INTO `sys_user` VALUES ('46', 'ssg', '81dc9bdb52d04dc20036dbd8313ed055', 
 INSERT INTO `sys_user` VALUES ('47', 'lm', '81dc9bdb52d04dc20036dbd8313ed055', '路明', null, '0', null, '2017-07-15 07:48:30', '0', '2017-05-02 11:23:33', '2017-07-15 07:48:30', null, null, '0', null, null, '1');
 INSERT INTO `sys_user` VALUES ('48', 'liudong', '81dc9bdb52d04dc20036dbd8313ed055', '刘冬', null, '0', null, '2017-07-15 07:47:53', '0', '2017-06-08 16:58:04', '2017-07-15 07:47:52', null, null, '0', null, null, null);
 INSERT INTO `sys_user` VALUES ('49', 'll', '81dc9bdb52d04dc20036dbd8313ed055', '李力', null, '0', null, '2017-07-15 07:44:59', '0', '2017-06-14 07:53:05', '2017-07-15 07:44:59', null, null, '0', null, null, null);
+INSERT INTO `sys_user` VALUES ('51', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '系统管理员', null, '0', '0', '2017-07-13 16:15:50', '0', '2015-07-30 15:06:11', '2017-07-13 16:15:39', null, null, '1', '1', '', '1');
 
 -- ----------------------------
 -- Table structure for sys_user_qx
