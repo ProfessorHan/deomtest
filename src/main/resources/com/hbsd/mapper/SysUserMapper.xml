@@ -126,7 +126,7 @@
       #{updateby,jdbcType=INTEGER}, #{superadmin,jdbcType=INTEGER}, #{deptId,jdbcType=INTEGER}, 
       #{wxUuid,jdbcType=VARCHAR}, #{groupId,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.hbsd.domain.SysUser" >
+  <insert id="insertSelective" parameterType="com.hbsd.domain.SysUser" useGeneratedKeys="true" keyProperty="id">
     insert into sys_user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >

@@ -146,8 +146,8 @@
                 field: 'id',
                 align: 'center',
                 formatter: function (value, row, index) {
-                    var e = '<button class="btn btn-xs btn-info" onclick="itemEditOrSave(\'' + row.id + '\',\'' + editUrl + '\',\'70%\',\'70%\')"><i class="fa fa-edit"></i>编辑</button> ';
-                    var d = '<button class="btn btn-xs btn-danger"  onclick="itemDelele(\'' + row.id + '\',\'' + delUrl + '\')"><i class="glyphicon glyphicon-remove"></i>删除</button> ';
+                    var e = '<button class="btn btn-sm btn-info" onclick="itemEditOrSave(\'' + row.id + '\',\'' + editUrl + '\',\'70%\',\'70%\')"><i class="fa fa-edit"></i>编辑</button> ';
+                    var d = '<button class="btn btn-sm btn-danger"  onclick="itemDelele(\'' + row.id + '\',\'' + delUrl + '\')"><i class="glyphicon glyphicon-remove"></i>删除</button> ';
                     return e + d;
                 }
             }

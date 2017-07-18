@@ -42,7 +42,7 @@ public class sysMenuController {
     @RequestMapping(value = "/ztree")
     @ResponseBody
     public List<ZtreeData> getSysMenuZtree() {
-        return sysMenuService.getZtreeData();
+        return sysMenuService.getZtreeData(null);
     }
 
     @RequestMapping("/delete")

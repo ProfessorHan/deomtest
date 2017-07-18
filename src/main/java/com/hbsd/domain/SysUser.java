@@ -37,6 +37,9 @@ public class SysUser {
 
     private Integer groupId;
 
+    private String roleName;
+
+
     public Integer getId() {
         return id;
     }
@@ -171,5 +174,13 @@ public class SysUser {
 
     public void setGroupId(Integer groupId) {
         this.groupId = groupId;
+    }
+
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
 }

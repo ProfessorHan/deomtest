@@ -30,48 +30,38 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="panel-body" style="margin-top: 10px">
-                <form class="form-inline" role="form">
-                    <div class="form-group">
-                        <label class="sr-only" for="caseNo">案件编号</label>
-                        <input id="caseNo" class="form-control" name="caseNo" type="text" placeholder="案件编号">
-                    </div>
-                    <div class="form-group" style="margin-left: 20px">
-                        <label class="sr-only" for="caseName">案件名称</label>
-                        <input id="caseName" class="form-control" name="caseName" type="text" placeholder="案件名称">
-                    </div>
-                    <%-- <div class="form-group" style="margin-left: 10px">
+                <%-- <form class="form-inline" role="form">
+                     <div class="form-group">
+                         <label class="sr-only" for="caseNo">案件编号</label>
+                         <input id="caseNo" class="form-control" name="caseNo" type="text" placeholder="案件编号">
+                     </div>
+                     <div class="form-group" style="margin-left: 20px">
                          <label class="sr-only" for="caseName">案件名称</label>
-                         <select id="city" class="form-control" name="caseName" type="text">
-                             <option value="">选择城市</option>
-                             <option value="1">北京</option>
-                             <option value="2">天津</option>
-                             <option value="3">上海</option>
-                         </select>
-                     </div>--%>
-
-                    <div class="form-group" style="margin-left: 10px">
-                        <input type="text" id="beginDate" name="beginDate"
-                               class="form-control date" placeholder="开始时间"/>
-                        <i class="fa fa-exchange"></i>
-                        <input type="text" id="endDate" name="endDate"
-                               class="form-control date" placeholder="结束时间"/>
-                    </div>
-                    <div class="checkbox" style="margin-left: 10px">
-                        <label>
-                            <input id="radio1" type="radio" name="caseType" value="0" checked>全部
-                        </label>
-                        <label>
-                            <input id="radio3" type="radio" name="caseType" value="2">刑事案件
-                        </label>
-                        <label>
-                            <input id="radio2" type="radio" name="caseType" value="3">行政案件
-                        </label>
-                    </div>
-                    <button class="btn btn-success" id="search" style="margin-left: 20px">查询</button>
-                    <button class="btn btn-primary" type="reset" style="margin-left: 5px">重置</button>
-                </form>
-                <div style="margin-top: 20px"></div>
-                <div class="switch switch-mini" data-on="info" data-off="success"> <input type="checkbox" checked value='1'/> </div>
+                         <input id="caseName" class="form-control" name="caseName" type="text" placeholder="案件名称">
+                     </div>
+                     <div class="form-group" style="margin-left: 10px">
+                         <input type="text" id="beginDate" name="beginDate"
+                                class="form-control date" placeholder="开始时间"/>
+                         <i class="fa fa-exchange"></i>
+                         <input type="text" id="endDate" name="endDate"
+                                class="form-control date" placeholder="结束时间"/>
+                     </div>
+                     <div class="checkbox" style="margin-left: 10px">
+                         <label>
+                             <input id="radio1" type="radio" name="caseType" value="0" checked>全部
+                         </label>
+                         <label>
+                             <input id="radio3" type="radio" name="caseType" value="2">刑事案件
+                         </label>
+                         <label>
+                             <input id="radio2" type="radio" name="caseType" value="3">行政案件
+                         </label>
+                     </div>
+                     <button class="btn btn-success" id="search" style="margin-left: 20px">查询</button>
+                     <button class="btn btn-primary" type="reset" style="margin-left: 5px">重置</button>
+                 </form>--%>
+                <button id="item-save" class="btn btn-success">新增</button>
+                <div style="margin-top: 10px"></div>
                 <table id="table"></table>
             </div>
         </div>
@@ -84,7 +74,7 @@
 <script src="/bootstrap-switch-3.3.4/js/bootstrap-switch.js"></script>
 <script>
     var delUrl = "${basePath}/sysRole/delete";
-    var editUrl = "${basePath}/legalCase/toSaveOrUpdate";
+    var editUrl = "${basePath}/sysRole/toSaveOrUpdate";
     var $table = $('#table');
     $table.bootstrapTable({
         url: "${basePath}/sysRole/page",
@@ -106,12 +96,42 @@
 //        showColumns: true,
 //        detailView: true,
         onPostBody: function () {
-            $('.switch').bootstrapSwitch();
-            $('.switch').on('switch-change', function (e, data) {
-                var $el = $(data.el)
-                    , value = data.value;
-                console.log(e, $el, value);
-            });
+            $('.bootstrap-switch').bootstrapSwitch(
+                {
+                    onText: "启用",
+                    offText: "禁用",
+                    size: "mini",
+                    offColor: "danger",
+                    onSwitchChange: function (e, data) {
+                        var id = $(this).attr("name")
+                        if (data == true) {
+                            data = 1;
+                        } else {
+                            data = 0;
+                        }
+                        $.get("${basePath}/sysRole/setStatus", {id: id, status: data}, function (data) {
+                            if (data.code == 0) {
+                                layer.msg(
+                                    data.msg,
+                                    {
+                                        icon: 1,
+                                        time: 1000
+                                    });
+                            } else {
+                                layer.msg(
+                                    data.msg,
+                                    {
+                                        icon: 2,
+                                        time: 1000
+                                    },
+                                    function () {
+                                        refreshTable();
+                                    });
+                            }
+                        });
+                    }
+                }
+            );
         },
         queryParams: function queryParams(params) {   //设置查询参数
             var caseType;
@@ -187,7 +207,12 @@
                 valign: 'middle',
                 formatter: function (value, row, index) {
                     //language=HTML
-                    var html = "<div class=\"switch switch-mini\"><input type=\"checkbox\" checked /></div>";
+                    var html
+                    if (value == 0) {
+                        html = "<input name='" + row.id + "' class='bootstrap-switch' type='checkbox'/>";
+                    } else {
+                        html = "<input name='" + row.id + "' class='bootstrap-switch' type=\"checkbox\" checked />";
+                    }
                     return html;
                 }
             },
@@ -196,13 +221,17 @@
                 field: 'id',
                 align: 'center',
                 formatter: function (value, row, index) {
-                    var e = '<button class="btn btn-xs btn-info" onclick="itemEditOrSave(\'' + row.id + '\',\'' + editUrl + '\',\'70%\',\'70%\')"><i class="fa fa-edit"></i>编辑</button> ';
-                    var d = '<button class="btn btn-xs btn-danger"  onclick="itemDelele(\'' + row.id + '\',\'' + delUrl + '\')"><i class="glyphicon glyphicon-remove"></i>删除</button> ';
-                    return e + d;
+                    var a = '<button class="btn btn-sm btn-info" onclick="itemEditOrSave(\'' + row.id + '\',\'' + editUrl + '\',\'70%\',\'70%\')"><i class="fa fa-edit"></i>编辑</button> ';
+                    var b = '<button class="btn btn-sm btn-danger"  onclick="itemDelele(\'' + row.id + '\',\'' + delUrl + '\')"><i class="glyphicon glyphicon-remove"></i>删除</button> ';
+                    var c = '<button class="btn btn-sm btn-primary" onclick="itemEditOrSave(\'' + row.id + '\',\'' + '${basePath}/sysRoleRes/index' + '\',\'30%\',\'70%\')"><i class="fa fa-edit"></i>权限分配</button> ';
+                    return a + b + c;
                 }
             }
         ]
     });
+    $("#item-save").click(function () {
+        itemEditOrSave("", editUrl, "70%", "70%");
+    })
     $("#search").click(searchTable);
     $(".date").datetimepicker(
         {

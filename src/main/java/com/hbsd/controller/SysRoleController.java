@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Date;
+
 /**
  * Created by HanFei on 2017/7/17.
  */
@@ -48,6 +50,7 @@ public class SysRoleController {
     @ResponseBody
     public JsonResult toSaveOrUpdateView(SysRole sysRole) {
         if (sysRole.getId() == null) {
+            sysRole.setCreatedate(new Date());
             sysRoleService.save(sysRole);
             return JsonResult.success("添加成功");
         } else {
@@ -72,4 +75,6 @@ public class SysRoleController {
         boolean b = sysRoleService.update(sysRole);
         return status == 1 ? JsonResult.success("已启用") : JsonResult.success("已禁用");
     }
+
+
 }

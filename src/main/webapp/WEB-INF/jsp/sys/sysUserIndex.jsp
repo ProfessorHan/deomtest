@@ -47,6 +47,7 @@
                     </div>
                     <button class="btn btn-success" id="search" style="margin-left: 20px">查询</button>
                     <button class="btn btn-primary" type="reset" style="margin-left: 5px">重置</button>
+                    <button class="btn btn-primary btn-small" id="item-save" style="margin-left: 5px">添加新用户</button>
                 </form>
                 <table id="table"></table>
             </div>
@@ -131,6 +132,12 @@
                 valign: 'middle',
             },
             {
+                title: '角色',
+                field: 'roleName',
+                align: 'center',
+                valign: 'middle',
+            },
+            {
                 title: '创建日期',
                 field: 'createtime',
                 align: 'center',
@@ -145,8 +152,8 @@
                 field: 'id',
                 align: 'center',
                 formatter: function (value, row, index) {
-                    var e = '<button class="btn btn-xs btn-info" onclick="itemEditOrSave(\'' + row.id + '\',\'' + editUrl + '\',\'70%\',\'70%\')"><i class="fa fa-edit"></i>编辑</button> ';
-                    var d = '<button class="btn btn-xs btn-danger"  onclick="itemDelele(\'' + row.id + '\',\'' + delUrl + '\')"><i class="glyphicon glyphicon-remove"></i>删除</button> ';
+                    var e = '<button class="btn btn-sm btn-info" onclick="itemEditOrSave(\'' + row.id + '\',\'' + editUrl + '\',\'70%\',\'70%\')"><i class="fa fa-edit"></i>编辑</button> ';
+                    var d = '<button class="btn btn-sm btn-danger"  onclick="itemDelele(\'' + row.id + '\',\'' + delUrl + '\')"><i class="glyphicon glyphicon-remove"></i>删除</button> ';
                     return e + d;
                 }
             }
@@ -164,6 +171,10 @@
             startView: 2,
             minView: 2,
         });
+    $("#item-save").click(function () {
+        itemEditOrSave("", editUrl, "70%", "70%");
+        return false;
+    })
 </script>
 </body>
 </html>

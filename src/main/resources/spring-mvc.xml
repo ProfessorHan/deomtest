@@ -15,12 +15,17 @@
 		http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd">
 
 
-    <mvc:annotation-driven></mvc:annotation-driven>
+    <mvc:annotation-driven conversion-service="conversionService"></mvc:annotation-driven>
+
+    <bean id="conversionService"
+          class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+    </bean>
 
     <!-- 扫描classpath的包下的所有类，该包路径下的类可以不需要配置bean了 -->
     <context:component-scan base-package="com.hbsd.controller" use-default-filters="false">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
+
 
     <!--<mvc:interceptors>
         <mvc:interceptor>
