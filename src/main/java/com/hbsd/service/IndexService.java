@@ -2,7 +2,9 @@ package com.hbsd.service;
 
 import com.hbsd.domain.SysMenu;
 import com.hbsd.domain.SysMenuExample;
+import com.hbsd.domain.SysUser;
 import com.hbsd.mapper.SysMenuMapper;
+import com.hbsd.mapper.SysUserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,9 +25,18 @@ public class IndexService {
     @Autowired
     private SysMenuMapper sysMenuMapper;
 
-    public String initMenus() {
-        List<SysMenu> sysMenus = sysMenuMapper.selectByExample(new SysMenuExample());
-        sysMenus.sort((x, y) -> Integer.compare(y.getMenuOrder(), x.getMenuOrder()));
+    @Autowired
+    private SysUserMapper sysUserMapper;
+
+    public String initMenus(SysUser sysUser) {
+        List<SysMenu> sysMenus = null;
+        if (sysUser.getId() != 0) {
+            sysMenus = sysMenuMapper.selectMenusByuserId(sysUser.getId());
+        } else {
+            SysMenuExample sysMenuExample = new SysMenuExample();
+            sysMenuExample.setOrderByClause("MENU_ORDER ASC");
+            sysMenus = sysMenuMapper.selectByExample(null);
+        }
         String html = " <div class=\"sidebar-nav navbar-collapse\">" + getMenuHtml(0, sysMenus) + "</div>";
         return html;
     }

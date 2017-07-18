@@ -29,4 +29,6 @@ public interface SysMenuMapper {
     int updateByPrimaryKeySelective(SysMenu record);
 
     int updateByPrimaryKey(SysMenu record);
+
+    List<SysMenu> selectMenusByuserId(@Param("userId") Integer userId);
 }

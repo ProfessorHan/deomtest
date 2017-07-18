@@ -1,5 +1,6 @@
 package com.hbsd.mapper;
 
+import com.hbsd.domain.SysMenu;
 import com.hbsd.domain.SysUser;
 import com.hbsd.domain.SysUserExample;
 import org.apache.ibatis.annotations.Param;
@@ -30,4 +31,6 @@ public interface SysUserMapper {
     int updateByPrimaryKeySelective(SysUser record);
 
     int updateByPrimaryKey(SysUser record);
+
+
 }
