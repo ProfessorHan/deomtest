@@ -42,7 +42,28 @@
 
     <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
+
         <property name="configLocation" value="classpath:mybatis.cfg.xml"></property>
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    <property name="properties">
+                        <value>
+                            helperDialect=mysql
+                            <!--reasonable=true-->
+                            supportMethodsArguments=false
+                            <!--params=count=countSql-->
+                            autoRuntimeDialect=false
+                        </value>
+                    </property>
+                </bean>
+            </array>
+        </property>
+        <property name="mapperLocations">
+            <array>
+                <value> classpath*:mapper/*Mapper.xml</value>
+            </array>
+        </property>
     </bean>
 
 
@@ -52,6 +73,7 @@
         <property name="sqlSessionFactoryBeanName" value="sessionFactory"></property>
     </bean>
 
+    <aop:aspectj-autoproxy/>
 
     <!-- 配置事务管理器bean,使用HibernateTransactionManager事务管理器 -->
     <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

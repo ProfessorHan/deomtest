@@ -36,8 +36,8 @@
     </settings>
 
 
-    <plugins>
+    <!--<plugins>
         <plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
-    </plugins>
+    </plugins>-->
 
 </configuration>

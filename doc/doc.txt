@@ -1,2 +1,8 @@
+bootstrap-table
 bootstrap-table:http://bootstrap-table.wenzhixin.net.cn/zh-cn/documentation/
+-------------
+datepicker
 http://bootstrap-datepicker.readthedocs.io/en/latest/
+--------------------------------------
+pageHelper插件
+https://github.com/pagehelper/Mybatis-PageHelper/blob/master/README_zh.md
