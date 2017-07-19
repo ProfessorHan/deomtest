@@ -61,10 +61,8 @@ public class sysMenuController {
     }
 
     @GetMapping(value = "/toSave")
-    public String toSysMenuSave(@RequestParam(required = true) int id, ModelMap modelMap) {
-        SysMenu sysMenu = sysMenuService.selectByPrimaryKey(id);
-        modelMap.addAttribute("sysMenu", sysMenu);
-        return "sys/sysMenuEdit";
+    public String toSysMenuSave( ModelMap modelMap) {
+        return "sys/sysMenuSave";
     }
 
     @RequestMapping("/edit")
@@ -78,6 +76,7 @@ public class sysMenuController {
     @RequestMapping("/save")
     @ResponseBody
     public JsonResult sysMenuSave(SysMenu sysMenu) {
+        sysMenu.setMenuType(1);
         boolean save = sysMenuService.save(sysMenu);
         return save ? JsonResult.success("保存成功") : JsonResult.failure("保存失败");
     }

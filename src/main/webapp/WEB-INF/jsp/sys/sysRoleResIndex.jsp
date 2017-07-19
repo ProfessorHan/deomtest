@@ -46,7 +46,6 @@
         setting.check.chkboxType = {"Y": "ps", "N": "ps"};
         $.fn.zTree.init($("#zTree"), setting, zNodes);
         zTree_Menu = $.fn.zTree.getZTreeObj("zTree");
-        zTree_Menu.getCheckedNodes(true);
     })
 
     $("#no").on("click", function (e) {

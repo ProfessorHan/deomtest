@@ -17,35 +17,38 @@
 <body>
 <div class="container">
     <form id="submitForm" class="form-horizontal" action="">
-        <input type="hidden" name="id" value="${sysMenu.id}">
+        <input type="hidden" name="parentId" id="parentId" value="">
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
+                    <label for="parentName" class="col-md-3 control-label">上级菜单</label>
+                    <div class="col-md-9">
+                        <input id="parentName" name="parentName" class="form-control" type="text">
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for="menuName" class="col-md-3 control-label">名称</label>
                     <div class="col-md-9">
-                        <input id="menuName" name="menuName" class="form-control" type="text" value="${sysMenu.menuName}">
+                        <input id="menuName" name="menuName" class="form-control" type="text">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="menuUrl" class="col-md-3 control-label">路径</label>
                     <div class="col-md-9">
-                        <input id="menuUrl" name="menuUrl" class="form-control" type="text"
-                               value="${sysMenu.menuUrl}">
+                        <input id="menuUrl" name="menuUrl" class="form-control" type="text">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="menuIcon" class="col-md-3 control-label">图标</label>
                     <div class="col-md-9">
-                        <input id="menuIcon" name="menuIcon" class="form-control" type="text"
-                               value="${sysMenu.menuIcon}">
+                        <input id="menuIcon" name="menuIcon" class="form-control" type="text">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="menuOrder" class="col-md-3 control-label">序号</label>
                     <div class="col-md-9">
-                        <input id="menuOrder" name="menuOrder" class="form-control" type="text"
-                               value="${sysMenu.menuOrder}">
+                        <input id="menuOrder" name="menuOrder" class="form-control" type="text">
                     </div>
                 </div>
 
@@ -59,6 +62,7 @@
                 </div>
             </div>
             <div class="col-md-6">
+                <ul id="zTree" class="ztree"></ul>
             </div>
         </div>
     </form>
@@ -66,6 +70,37 @@
 </body>
 <%@ include file="/common/basejs.jsp" %>
 <script>
+
+    var zNodes;
+    $.ajax({
+        type: "GET",
+        url: "${basePath}/sysRoleRes/ztree?id=${id}",
+        dataType: "json",
+        async: false,
+        success: function (data) {
+            zNodes = data;
+        }
+    });
+    var setting = {
+        /*check: {
+            enable: true,
+            chkStyle: "radio",
+            radioType: "all"
+        },*/
+        callback: {
+            onClick: zTreeOnClick
+        }
+    };
+
+    //    setting.check.chkboxType = {"Y": "ps", "N": "ps"};
+    $.fn.zTree.init($("#zTree"), setting, zNodes);
+    zTree_Menu = $.fn.zTree.getZTreeObj("zTree");
+
+    function zTreeOnClick(event, treeId, treeNode) {
+        $("#parentName").val(treeNode.name)
+        $("#parentId").val(treeNode.id)
+//        alert(treeNode.id + ", " + treeNode.name);
+    };
 
     var parentLayer = parent.layer.getFrameIndex(window.name);
     var topLayer = top.layer.getFrameIndex(window.name);
@@ -88,9 +123,11 @@
 
     $("#submitForm").validate({
         rules: {
+            parentName: {
+                required: true,
+            },
             menuName: {
                 required: true,
-//                minlength: 2
             },
             menuUrl: {
                 required: true,
@@ -98,19 +135,22 @@
 
             menuOrder: {
                 required: true,
-                digits:true
+                digits: true
             },
         },
         messages: {
-            caseNo: {
-                menuName: "请输入名称",
+            parentName: {
+                required: "请选择上级菜单",
+            },
+            menuName: {
+                required: "请输入名称",
             },
             menuUrl: {
                 required: "请输入路径",
             },
             menuOrder: {
                 required: "请输入序号",
-                digits:"请输入合法数字"
+                digits: "请输入合法数字"
             },
         },
         errorElement: "em",
@@ -131,13 +171,17 @@
             $(element).parents(".col-sm-5").addClass("has-success").removeClass("has-error");
         },
         submitHandler: function (form) {
+            if($("#parentId").val() == "") {
+                layer.msg("请选择上级菜单", {icon: 1, time: 1000});
+                return false;
+            }
             var $form = $("#submitForm");
             var $btn = $("#ok");
             if ($btn.hasClass("disabled")) {
                 return false;
             }
             var postData = $form.serialize();
-            $.post('${basePath}/sysMenu/edit', postData, function (data) {
+            $.post('${basePath}/sysMenu/save', postData, function (data) {
                 $btn.removeClass("disabled");
                 if (data.code == 0) {
                     layer.msg(

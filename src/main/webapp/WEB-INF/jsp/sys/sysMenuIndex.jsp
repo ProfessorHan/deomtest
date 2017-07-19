@@ -28,7 +28,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="panel-body" style="margin-top: 10px">
-                <button class="btn btn-success">新增</button>
+                <button class="btn btn-success" id="add">新增</button>
                 <div style="margin-top: 15px"></div>
                 <table id="table"></table>
             </div>
@@ -165,6 +165,10 @@
             startView: 2,
             minView: 2,
         });
+    $("#add").click(function () {
+        itemEditOrSave('','${basePath}/sysMenu/toSave','70%','70%');
+    })
+
 </script>
 </body>
 </html>
