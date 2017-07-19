@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50712
 File Encoding         : 65001
 
-Date: 2017-07-17 18:01:30
+Date: 2017-07-19 17:46:57
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -346,37 +346,6 @@ INSERT INTO `legal_case` VALUES ('319', '2', 'A1305239706002017010001', '刘保�
 INSERT INTO `legal_case` VALUES ('320', '2', 'A1305239000002017010002', '苏清敏扰乱公共场所秩序案', '扰乱公共场所秩序', '3', '行政案件', '18', '行政处理', '2017-01-06 00:00:00', '313', '34', '35', '58', '2017-6-21', '1', '系统管理员', '0', '0', '0', '0', '0', '对苏清敏行政拘留七日。,,', '7', null);
 
 -- ----------------------------
--- Table structure for sys_app_user
--- ----------------------------
-DROP TABLE IF EXISTS `sys_app_user`;
-CREATE TABLE `sys_app_user` (
-  `USER_ID` varchar(100) NOT NULL,
-  `USERNAME` varchar(255) DEFAULT NULL,
-  `PASSWORD` varchar(255) DEFAULT NULL,
-  `NAME` varchar(255) DEFAULT NULL,
-  `RIGHTS` varchar(255) DEFAULT NULL,
-  `ROLE_ID` varchar(100) DEFAULT NULL,
-  `LAST_LOGIN` varchar(255) DEFAULT NULL,
-  `IP` varchar(100) DEFAULT NULL,
-  `STATUS` varchar(32) DEFAULT NULL,
-  `BZ` varchar(255) DEFAULT NULL,
-  `PHONE` varchar(100) DEFAULT NULL,
-  `SFID` varchar(100) DEFAULT NULL,
-  `START_TIME` varchar(100) DEFAULT NULL,
-  `END_TIME` varchar(100) DEFAULT NULL,
-  `YEARS` int(10) DEFAULT NULL,
-  `NUMBER` varchar(100) DEFAULT NULL,
-  `EMAIL` varchar(32) DEFAULT NULL,
-  PRIMARY KEY (`USER_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of sys_app_user
--- ----------------------------
-INSERT INTO `sys_app_user` VALUES ('04762c0b28b643939455c7800c2e2412', 'dsfsd', 'f1290186a5d0b1ceab27f4e77c0c5d68', 'w', '', '55896f5ce3c0494fa6850775a4e29ff6', '', '', '0', '', '18766666666', '', '', '', '0', '001', '18766666666@qq.com');
-INSERT INTO `sys_app_user` VALUES ('3faac8fe5c0241e593e0f9ea6f2d5870', 'dsfsdf', 'f1290186a5d0b1ceab27f4e77c0c5d68', 'wewe', '', '68f23fc0caee475bae8d52244dea8444', '', '', '1', '', '18767676767', '', '', '', '0', 'wqwe', 'qweqwe@qq.com');
-
--- ----------------------------
 -- Table structure for sys_dept
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_dept`;
@@ -484,36 +453,6 @@ INSERT INTO `sys_dictionaries` VALUES ('f184bff5081d452489271a1bd57599ed', '上�
 INSERT INTO `sys_dictionaries` VALUES ('f30bf95e216d4ebb8169ff0c86330b8f', '客服部', '006', '6', 'c067fdaf51a141aeaa56ed26b70de863', '2', 'BM_006');
 
 -- ----------------------------
--- Table structure for sys_gl_qx
--- ----------------------------
-DROP TABLE IF EXISTS `sys_gl_qx`;
-CREATE TABLE `sys_gl_qx` (
-  `GL_ID` varchar(100) NOT NULL,
-  `ROLE_ID` varchar(100) DEFAULT NULL,
-  `FX_QX` int(10) DEFAULT NULL,
-  `FW_QX` int(10) DEFAULT NULL,
-  `QX1` int(10) DEFAULT NULL,
-  `QX2` int(10) DEFAULT NULL,
-  `QX3` int(10) DEFAULT NULL,
-  `QX4` int(10) DEFAULT NULL,
-  PRIMARY KEY (`GL_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of sys_gl_qx
--- ----------------------------
-INSERT INTO `sys_gl_qx` VALUES ('1', '2', '1', '1', '1', '1', '1', '1');
-INSERT INTO `sys_gl_qx` VALUES ('2', '1', '0', '0', '1', '1', '1', '1');
-INSERT INTO `sys_gl_qx` VALUES ('3b51b380c7bc485a84db2376b45b4e88', '1', '0', '0', '0', '0', '0', '0');
-INSERT INTO `sys_gl_qx` VALUES ('55896f5ce3c0494fa6850775a4e29ff6', '7', '0', '0', '1', '0', '0', '0');
-INSERT INTO `sys_gl_qx` VALUES ('68f23fc0caee475bae8d52244dea8444', '7', '0', '0', '1', '0', '0', '0');
-INSERT INTO `sys_gl_qx` VALUES ('7dfd8d1f7b6245d283217b7e63eec9b2', '1', '0', '0', '0', '0', '0', '0');
-INSERT INTO `sys_gl_qx` VALUES ('ac66961adaa2426da4470c72ffeec117', '1', '1', '0', '0', '1', '0', '0');
-INSERT INTO `sys_gl_qx` VALUES ('b0c77c29dfa140dc9b14a29c056f824f', '7', '1', '0', '1', '0', '0', '0');
-INSERT INTO `sys_gl_qx` VALUES ('e74f713314154c35bd7fc98897859fe3', '6', '1', '1', '1', '1', '0', '0');
-INSERT INTO `sys_gl_qx` VALUES ('f944a9df72634249bbcb8cb73b0c9b86', '7', '1', '1', '1', '0', '0', '0');
-
--- ----------------------------
 -- Table structure for sys_menu
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_menu`;
@@ -526,31 +465,33 @@ CREATE TABLE `sys_menu` (
   `MENU_ICON` varchar(100) DEFAULT NULL,
   `MENU_TYPE` int(10) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sys_menu
 -- ----------------------------
-INSERT INTO `sys_menu` VALUES ('1', '系统管理', '#', '0', '1', 'fa fa-fw fa-bar-chart-o', '2');
-INSERT INTO `sys_menu` VALUES ('2', '组织管理', 'role.do', '1', '2', null, '2');
-INSERT INTO `sys_menu` VALUES ('4', '用户管理', '/sysUser/index', '1', '4', null, '2');
-INSERT INTO `sys_menu` VALUES ('5', '系统用户', 'user/listUsers.do', '1', '3', null, '2');
-INSERT INTO `sys_menu` VALUES ('6', '信息管理', '#', '0', '2', 'fa fa-fw', '2');
-INSERT INTO `sys_menu` VALUES ('7', '图片管理', '/legalCase/index', '6', '1', null, '2');
-INSERT INTO `sys_menu` VALUES ('8', '性能监控', 'druid/index.html', '9', '1', null, '2');
-INSERT INTO `sys_menu` VALUES ('9', '系统工具', '#', '0', '3', 'fa fa-fw', '2');
-INSERT INTO `sys_menu` VALUES ('10', '接口测试', 'tool/interfaceTest.do', '9', '2', null, '2');
-INSERT INTO `sys_menu` VALUES ('11', '发送邮件', 'tool/goSendEmail.do', '9', '3', null, '2');
-INSERT INTO `sys_menu` VALUES ('12', '置二维码', 'tool/goTwoDimensionCode.do', '9', '4', null, '2');
-INSERT INTO `sys_menu` VALUES ('13', '多级别树', 'tool/ztree.do', '9', '5', null, '2');
-INSERT INTO `sys_menu` VALUES ('14', '地图工具', 'tool/map.do', '9', '6', null, '2');
-INSERT INTO `sys_menu` VALUES ('15', '微信管理', '#', '0', '2', 'fa fa-fw', '2');
-INSERT INTO `sys_menu` VALUES ('16', '文本回复', 'textmsg/list.do', '15', '2', null, '2');
-INSERT INTO `sys_menu` VALUES ('17', '应用命令', 'command/list.do', '15', '4', null, '2');
-INSERT INTO `sys_menu` VALUES ('18', '图文回复', 'imgmsg/list.do', '15', '3', null, '2');
-INSERT INTO `sys_menu` VALUES ('19', '关注回复', 'textmsg/goSubscribe.do', '15', '1', null, '2');
-INSERT INTO `sys_menu` VALUES ('20', '菜单管理', '/sysMenu/index', '1', '5', null, '2');
-INSERT INTO `sys_menu` VALUES ('21', '打印测试', 'tool/printTest.do', '9', '7', null, '2');
+INSERT INTO `sys_menu` VALUES ('1', '系统管理', '#', '0', '1', 'fa fa-fw fa-bar-chart-o', '1');
+INSERT INTO `sys_menu` VALUES ('2', '组织管理', 'role.do', '1', '2', null, '1');
+INSERT INTO `sys_menu` VALUES ('4', '用户管理', '/sysUser/index', '1', '4', null, '1');
+INSERT INTO `sys_menu` VALUES ('5', '角色管理', '/sysRole/index', '1', '3', null, '1');
+INSERT INTO `sys_menu` VALUES ('6', '信息管理', '#', '0', '2', 'fa fa-fw', '1');
+INSERT INTO `sys_menu` VALUES ('7', '案件管理', '/legalCase/index', '6', '1', null, '1');
+INSERT INTO `sys_menu` VALUES ('8', '性能监控', 'druid/index.html', '9', '1', null, '1');
+INSERT INTO `sys_menu` VALUES ('9', '系统工具', '#', '0', '3', 'fa fa-fw', '1');
+INSERT INTO `sys_menu` VALUES ('10', '接口测试', 'tool/interfaceTest.do', '9', '2', null, '1');
+INSERT INTO `sys_menu` VALUES ('11', '发送邮件', 'tool/goSendEmail.do', '9', '3', null, '1');
+INSERT INTO `sys_menu` VALUES ('12', '置二维码', 'tool/goTwoDimensionCode.do', '9', '4', null, '1');
+INSERT INTO `sys_menu` VALUES ('13', '多级别树', 'tool/ztree.do', '9', '5', null, '1');
+INSERT INTO `sys_menu` VALUES ('14', '地图工具', 'tool/map.do', '9', '6', null, '1');
+INSERT INTO `sys_menu` VALUES ('15', '微信管理', '#', '0', '2', 'fa fa-fw', '1');
+INSERT INTO `sys_menu` VALUES ('16', '文本回复', '#', '15', '2', '', '1');
+INSERT INTO `sys_menu` VALUES ('17', '应用命令', 'command/list.do', '15', '4', null, '1');
+INSERT INTO `sys_menu` VALUES ('18', '图文回复', 'imgmsg/list.do', '15', '3', null, '1');
+INSERT INTO `sys_menu` VALUES ('19', '关注回复', 'textmsg/goSubscribe.do', '15', '1', '', '1');
+INSERT INTO `sys_menu` VALUES ('20', '菜单管理', '/sysMenu/index', '1', '5', null, '1');
+INSERT INTO `sys_menu` VALUES ('21', '打印测试', 'tool/printTest.do', '9', '7', null, '1');
+INSERT INTO `sys_menu` VALUES ('22', '三级菜单1', null, '16', '1', null, '1');
+INSERT INTO `sys_menu` VALUES ('23', '三级菜单2', null, '16', '2', null, '1');
 
 -- ----------------------------
 -- Table structure for sys_role
@@ -564,7 +505,7 @@ CREATE TABLE `sys_role` (
   `createdate` datetime DEFAULT NULL,
   `status` int(11) DEFAULT '1' COMMENT '0-禁用  1-启用',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sys_role
@@ -574,6 +515,58 @@ INSERT INTO `sys_role` VALUES ('2', '县局管理', '县局管理', '1', '2016-1
 INSERT INTO `sys_role` VALUES ('3', '所/队管理', '所/队管理', '1', '2017-05-11 17:13:58', '1');
 INSERT INTO `sys_role` VALUES ('11', '民警管理', '民警管理', '1', '2017-06-15 18:55:56', '1');
 INSERT INTO `sys_role` VALUES ('12', '超级管理员', '最高权限管理', '1', '2017-06-16 10:36:31', '1');
+
+-- ----------------------------
+-- Table structure for sys_role_res
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_role_res`;
+CREATE TABLE `sys_role_res` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `role_id` int(11) DEFAULT NULL,
+  `res_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=115 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of sys_role_res
+-- ----------------------------
+INSERT INTO `sys_role_res` VALUES ('78', '3', '15');
+INSERT INTO `sys_role_res` VALUES ('79', '3', '16');
+INSERT INTO `sys_role_res` VALUES ('80', '3', '22');
+INSERT INTO `sys_role_res` VALUES ('81', '3', '23');
+INSERT INTO `sys_role_res` VALUES ('82', '1', '1');
+INSERT INTO `sys_role_res` VALUES ('83', '1', '2');
+INSERT INTO `sys_role_res` VALUES ('84', '1', '4');
+INSERT INTO `sys_role_res` VALUES ('85', '1', '5');
+INSERT INTO `sys_role_res` VALUES ('86', '1', '20');
+INSERT INTO `sys_role_res` VALUES ('87', '1', '6');
+INSERT INTO `sys_role_res` VALUES ('88', '1', '7');
+INSERT INTO `sys_role_res` VALUES ('89', '1', '9');
+INSERT INTO `sys_role_res` VALUES ('90', '1', '8');
+INSERT INTO `sys_role_res` VALUES ('91', '1', '10');
+INSERT INTO `sys_role_res` VALUES ('92', '1', '11');
+INSERT INTO `sys_role_res` VALUES ('93', '1', '12');
+INSERT INTO `sys_role_res` VALUES ('94', '1', '13');
+INSERT INTO `sys_role_res` VALUES ('95', '1', '14');
+INSERT INTO `sys_role_res` VALUES ('96', '1', '21');
+INSERT INTO `sys_role_res` VALUES ('97', '1', '15');
+INSERT INTO `sys_role_res` VALUES ('98', '1', '16');
+INSERT INTO `sys_role_res` VALUES ('99', '1', '22');
+INSERT INTO `sys_role_res` VALUES ('100', '1', '23');
+INSERT INTO `sys_role_res` VALUES ('101', '1', '18');
+INSERT INTO `sys_role_res` VALUES ('102', '1', '19');
+INSERT INTO `sys_role_res` VALUES ('103', '2', '6');
+INSERT INTO `sys_role_res` VALUES ('104', '2', '7');
+INSERT INTO `sys_role_res` VALUES ('105', '2', '9');
+INSERT INTO `sys_role_res` VALUES ('106', '2', '8');
+INSERT INTO `sys_role_res` VALUES ('107', '2', '10');
+INSERT INTO `sys_role_res` VALUES ('108', '2', '15');
+INSERT INTO `sys_role_res` VALUES ('109', '2', '16');
+INSERT INTO `sys_role_res` VALUES ('110', '2', '22');
+INSERT INTO `sys_role_res` VALUES ('111', '2', '23');
+INSERT INTO `sys_role_res` VALUES ('112', '2', '17');
+INSERT INTO `sys_role_res` VALUES ('113', '2', '18');
+INSERT INTO `sys_role_res` VALUES ('114', '2', '19');
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -598,27 +591,28 @@ CREATE TABLE `sys_user` (
   `wx_uuid` varchar(50) COLLATE utf8_bin DEFAULT NULL,
   `group_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES ('1', 'mxh', '81dc9bdb52d04dc20036dbd8313ed055', '孟小辉', null, '0', null, '2017-07-15 08:17:25', '0', '2017-02-14 10:54:16', '2017-07-15 08:17:25', null, null, '0', null, null, '1');
+INSERT INTO `sys_user` VALUES ('0', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '系统管理员', null, '0', '0', '2017-07-13 16:15:50', '0', '2015-07-30 15:06:11', '2017-07-13 16:15:39', null, null, '1', '1', '', '1');
+INSERT INTO `sys_user` VALUES ('1', 'mxh', '81dc9bdb52d04dc20036dbd8313ed055', '孟小辉', '', '0', null, '2017-07-15 08:17:25', '0', '2017-02-14 10:54:16', '2017-07-15 08:17:25', null, null, '0', null, null, '1');
 INSERT INTO `sys_user` VALUES ('2', 'sn', '81dc9bdb52d04dc20036dbd8313ed055', '宋楠', null, '0', null, '2017-07-15 08:11:45', '0', '2017-02-14 10:54:55', '2017-07-15 08:11:45', null, null, '0', null, null, '1');
 INSERT INTO `sys_user` VALUES ('3', 'lys', '81dc9bdb52d04dc20036dbd8313ed055', '李艳盛', null, '0', null, '2017-07-11 07:44:01', '0', '2017-02-14 10:54:32', '2017-07-11 07:44:00', null, null, '0', null, null, '1');
 INSERT INTO `sys_user` VALUES ('4', 'tyh', '81dc9bdb52d04dc20036dbd8313ed055', '田艳红', null, '0', null, '2017-07-12 08:25:32', '0', '2017-02-14 10:55:14', '2017-07-12 08:25:32', null, null, '0', null, null, '1');
 INSERT INTO `sys_user` VALUES ('5', 'zxl', '81dc9bdb52d04dc20036dbd8313ed055', '张晓丽', null, '0', null, '2017-07-15 08:45:12', '0', '2017-02-14 10:57:08', '2017-07-15 08:45:12', null, null, '0', null, null, '1');
 INSERT INTO `sys_user` VALUES ('9', 'sm', '81dc9bdb52d04dc20036dbd8313ed055', '宋明', null, '0', null, '2017-07-14 17:14:21', '0', '2017-02-14 10:51:51', '2017-07-14 17:14:20', null, null, '0', null, null, '1');
 INSERT INTO `sys_user` VALUES ('10', 'wy', '81dc9bdb52d04dc20036dbd8313ed055', '魏燕', null, '0', null, '2017-07-15 07:48:54', '0', '2017-02-14 10:52:14', '2017-07-15 07:48:54', null, null, '0', null, null, '1');
-INSERT INTO `sys_user` VALUES ('12', 'rhz', '81dc9bdb52d04dc20036dbd8313ed055', '任会中', null, '0', null, '2017-07-15 08:06:41', '0', '2017-02-14 10:52:52', '2017-07-15 08:06:41', null, null, '0', null, null, '1');
-INSERT INTO `sys_user` VALUES ('14', 'szc', '81dc9bdb52d04dc20036dbd8313ed055', '宋志超', null, '0', null, '2017-07-14 08:40:38', '0', '2017-02-14 10:55:37', '2017-07-14 08:40:38', null, null, '0', null, null, '1');
+INSERT INTO `sys_user` VALUES ('12', 'rhz', '81dc9bdb52d04dc20036dbd8313ed055', '任会中', '', '0', null, '2017-07-15 08:06:41', '0', '2017-02-14 10:52:52', '2017-07-15 08:06:41', null, null, '0', null, null, '1');
+INSERT INTO `sys_user` VALUES ('14', 'szc', '81dc9bdb52d04dc20036dbd8313ed055', '宋志超', '', '0', null, '2017-07-14 08:40:38', '0', '2017-02-14 10:55:37', '2017-07-14 08:40:38', null, null, '0', null, null, '1');
 INSERT INTO `sys_user` VALUES ('16', 'zq', '81dc9bdb52d04dc20036dbd8313ed055', '赵青', null, '0', null, '2017-07-15 07:45:35', '0', '2017-02-14 10:48:22', '2017-07-15 07:45:34', null, null, '0', null, null, '1');
 INSERT INTO `sys_user` VALUES ('17', 'lyj', '81dc9bdb52d04dc20036dbd8313ed055', '刘一静', null, '0', null, '2017-07-01 07:43:45', '0', '2017-02-14 10:50:33', '2017-07-01 07:43:45', null, null, '0', null, null, '1');
 INSERT INTO `sys_user` VALUES ('19', 'zl', '81dc9bdb52d04dc20036dbd8313ed055', '张磊', null, '0', null, '2017-07-15 07:48:00', '0', '2017-02-14 10:51:14', '2017-07-15 07:47:59', null, null, '0', null, null, '1');
 INSERT INTO `sys_user` VALUES ('21', 'zzl', '81dc9bdb52d04dc20036dbd8313ed055', '赵子良', null, '0', null, '2017-07-15 07:51:04', '0', '2017-02-14 10:53:52', '2017-07-15 07:51:04', null, null, '0', null, null, '1');
 INSERT INTO `sys_user` VALUES ('22', 'wz', '81dc9bdb52d04dc20036dbd8313ed055', '王智', null, '0', null, '2017-07-15 08:05:23', '0', '2017-02-14 10:55:52', '2017-07-15 08:05:23', null, null, '0', null, null, '2');
 INSERT INTO `sys_user` VALUES ('23', 'zyr', '81dc9bdb52d04dc20036dbd8313ed055', '赵乙锐', null, '0', null, '2017-07-15 07:47:22', '0', '2017-02-14 10:56:18', '2017-07-15 07:47:22', null, null, '0', null, null, '2');
-INSERT INTO `sys_user` VALUES ('24', 'lhm', '81dc9bdb52d04dc20036dbd8313ed055', '李宏民', null, '0', null, '2017-07-15 08:01:16', '0', '2017-02-14 10:56:33', '2017-07-15 08:01:16', null, null, '0', null, null, '2');
+INSERT INTO `sys_user` VALUES ('24', 'lhm', '81dc9bdb52d04dc20036dbd8313ed055', '李宏民', '', '0', null, '2017-07-15 08:01:16', '0', '2017-02-14 10:56:33', '2017-07-15 08:01:16', null, null, '0', null, null, '2');
 INSERT INTO `sys_user` VALUES ('25', 'qn', '81dc9bdb52d04dc20036dbd8313ed055', '祁娜', null, '0', null, '2017-05-25 07:58:22', '0', '2017-02-14 10:56:50', '2017-05-25 07:58:22', null, null, '0', null, null, '2');
 INSERT INTO `sys_user` VALUES ('42', 'lbb', '81dc9bdb52d04dc20036dbd8313ed055', '李贝贝', null, '0', null, '2017-07-15 07:47:21', '0', '2017-02-27 11:50:07', '2017-07-15 07:47:21', null, null, '0', null, null, '1');
 INSERT INTO `sys_user` VALUES ('43', 'hf', '81dc9bdb52d04dc20036dbd8313ed055', '韩斐', null, '0', null, '2017-07-15 07:53:15', '0', '2017-03-01 13:39:06', '2017-07-15 07:53:14', null, null, '0', null, null, '1');
@@ -628,7 +622,8 @@ INSERT INTO `sys_user` VALUES ('46', 'ssg', '81dc9bdb52d04dc20036dbd8313ed055', 
 INSERT INTO `sys_user` VALUES ('47', 'lm', '81dc9bdb52d04dc20036dbd8313ed055', '路明', null, '0', null, '2017-07-15 07:48:30', '0', '2017-05-02 11:23:33', '2017-07-15 07:48:30', null, null, '0', null, null, '1');
 INSERT INTO `sys_user` VALUES ('48', 'liudong', '81dc9bdb52d04dc20036dbd8313ed055', '刘冬', null, '0', null, '2017-07-15 07:47:53', '0', '2017-06-08 16:58:04', '2017-07-15 07:47:52', null, null, '0', null, null, null);
 INSERT INTO `sys_user` VALUES ('49', 'll', '81dc9bdb52d04dc20036dbd8313ed055', '李力', null, '0', null, '2017-07-15 07:44:59', '0', '2017-06-14 07:53:05', '2017-07-15 07:44:59', null, null, '0', null, null, null);
-INSERT INTO `sys_user` VALUES ('51', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '系统管理员', null, '0', '0', '2017-07-13 16:15:50', '0', '2015-07-30 15:06:11', '2017-07-13 16:15:39', null, null, '1', '1', '', '1');
+INSERT INTO `sys_user` VALUES ('53', 'wf', 'e10adc3949ba59abbe56e057f20f883e', '王菲', '13920266937', '1', null, null, '0', '2017-07-18 16:39:43', null, '51', null, '0', null, null, null);
+INSERT INTO `sys_user` VALUES ('54', 'xtf', 'f379eaf3c831b04de153469d1bec345e', '谢霆锋', '13888888888', '1', null, null, '0', '2017-07-18 16:44:16', null, '53', null, '0', null, null, null);
 
 -- ----------------------------
 -- Table structure for sys_user_qx
@@ -660,6 +655,34 @@ INSERT INTO `sys_user_qx` VALUES ('ac66961adaa2426da4470c72ffeec117', '0', '0', 
 INSERT INTO `sys_user_qx` VALUES ('b0c77c29dfa140dc9b14a29c056f824f', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `sys_user_qx` VALUES ('e74f713314154c35bd7fc98897859fe3', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `sys_user_qx` VALUES ('f944a9df72634249bbcb8cb73b0c9b86', '0', '0', '0', '0', '0', '0', '0', '0');
+
+-- ----------------------------
+-- Table structure for sys_user_role
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_user_role`;
+CREATE TABLE `sys_user_role` (
+  `id` int(255) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `role_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of sys_user_role
+-- ----------------------------
+INSERT INTO `sys_user_role` VALUES ('42', '52', '2');
+INSERT INTO `sys_user_role` VALUES ('43', '52', '3');
+INSERT INTO `sys_user_role` VALUES ('44', '52', '12');
+INSERT INTO `sys_user_role` VALUES ('50', '12', '2');
+INSERT INTO `sys_user_role` VALUES ('51', '12', '3');
+INSERT INTO `sys_user_role` VALUES ('52', '12', '11');
+INSERT INTO `sys_user_role` VALUES ('59', '14', '3');
+INSERT INTO `sys_user_role` VALUES ('60', '14', '11');
+INSERT INTO `sys_user_role` VALUES ('61', '14', '12');
+INSERT INTO `sys_user_role` VALUES ('70', '55', '2');
+INSERT INTO `sys_user_role` VALUES ('71', '55', '3');
+INSERT INTO `sys_user_role` VALUES ('72', '55', '11');
+INSERT INTO `sys_user_role` VALUES ('73', '53', '2');
 
 -- ----------------------------
 -- Table structure for tb_pictures
