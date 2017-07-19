@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,16 +39,8 @@ public class SysRoleResController {
 
     @RequestMapping(value = "/ztree")
     @ResponseBody
-    public List<ZtreeData> getSysMenuZtree(Integer id) {
-        List<ZtreeData> subZtreeDatas = sysMenuService.getZtreeData(id);
-        ZtreeData root = new ZtreeData();
-        root.setName("跟目录菜单");
-        root.setId(0);
-        root.setChildren(subZtreeDatas);
-        root.setOpen(true);
-        List<ZtreeData> ztreeDatas = new ArrayList<>();
-        ztreeDatas.add(root);
-        return ztreeDatas;
+    public List<ZtreeData> getSysMenuZtree(@RequestParam(required = true) int id) {
+        return sysMenuService.getZtreeData(id);
     }
 
     @RequestMapping(value = "/save")
