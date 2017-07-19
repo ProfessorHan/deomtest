@@ -2,12 +2,9 @@ package com.hbsd.mapper;
 
 import com.hbsd.domain.SysUserRole;
 import com.hbsd.domain.SysUserRoleExample;
-import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
-@Repository
 public interface SysUserRoleMapper {
     int countByExample(SysUserRoleExample example);
 
@@ -30,8 +27,4 @@ public interface SysUserRoleMapper {
     int updateByPrimaryKeySelective(SysUserRole record);
 
     int updateByPrimaryKey(SysUserRole record);
-
-    int saveUserRole(@Param("userId") Integer userId, @Param("roleIds") List<Integer> roleIds);
-
-    String selectRoleNameByUserId(@Param("userId") Integer userId);
 }
