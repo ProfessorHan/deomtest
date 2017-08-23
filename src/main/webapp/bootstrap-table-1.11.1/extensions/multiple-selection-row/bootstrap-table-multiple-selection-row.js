@@ -61,7 +61,7 @@
                 that.bootstrapTable("check", row.data("index"));  
             } else {
                 if(row.hasClass(that.bootstrapTable("getOptions").multipleSelectRowCssClass)) {
-                    row.removeClass(that.bootstrapTable("getOptions").multipleSelectRowCssClass)
+                    row.removeClass(that.bootstrapTable("getOptions").multipleSelectRowCssClass);
                     that.bootstrapTable("uncheck", row.data("index"));  
                 } else {
                     row.addClass(that.bootstrapTable("getOptions").multipleSelectRowCssClass);

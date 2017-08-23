@@ -49,7 +49,7 @@
             }
         }
         return fmt;
-    }
+    };
 
 //    var date = new Date();
 //    window.alert(date.pattern("yyyy-MM-dd hh:mm:ss"));

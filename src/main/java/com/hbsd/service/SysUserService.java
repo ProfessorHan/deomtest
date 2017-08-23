@@ -149,4 +149,5 @@ public class SysUserService {
         int i = sysUserMapper.deleteByPrimaryKey(id);
         return i >= 1;
     }
+
 }

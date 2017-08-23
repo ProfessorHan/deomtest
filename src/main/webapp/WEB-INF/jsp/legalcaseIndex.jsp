@@ -106,7 +106,7 @@
                 if ($(this).prop("checked")) {
                     caseType = $(this).val();
                 }
-            })
+            });
             var param = {
                 pageNumber: params.pageNumber,
                 pageSize: params.pageSize,

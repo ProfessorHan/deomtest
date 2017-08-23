@@ -45,6 +45,13 @@ public class sysMenuController {
         return sysMenuService.getZtreeData(null);
     }
 
+    @GetMapping(value = "/toSave")
+    public String toSysMenuSave(@RequestParam(required = true) int id, ModelMap modelMap) {
+        SysMenu sysMenu = sysMenuService.selectByPrimaryKey(id);
+        modelMap.addAttribute("sysMenu", sysMenu);
+        return "sys/sysMenuEdit";
+    }
+
     @RequestMapping("/delete")
     @ResponseBody
     public JsonResult delete(@RequestParam(required = true) Integer id) {
@@ -55,13 +62,6 @@ public class sysMenuController {
 
     @GetMapping(value = "/toEdit")
     public String toSysMenuEdit(@RequestParam(required = true) int id, ModelMap modelMap) {
-        SysMenu sysMenu = sysMenuService.selectByPrimaryKey(id);
-        modelMap.addAttribute("sysMenu", sysMenu);
-        return "sys/sysMenuEdit";
-    }
-
-    @GetMapping(value = "/toSave")
-    public String toSysMenuSave(@RequestParam(required = true) int id, ModelMap modelMap) {
         SysMenu sysMenu = sysMenuService.selectByPrimaryKey(id);
         modelMap.addAttribute("sysMenu", sysMenu);
         return "sys/sysMenuEdit";
