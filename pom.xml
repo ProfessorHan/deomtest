@@ -142,6 +142,13 @@
 
         <dependency>
             <groupId>org.springframework</groupId>
+            <artifactId>spring-jms</artifactId>
+            <version>${spring-version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <version>${spring-version}</version>
             <scope>test</scope>
@@ -258,17 +265,17 @@
             <version>1.7.21</version>
         </dependency>
         <!--log4j-->
-        <!--<dependency>
+        <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
         </dependency>
-        &lt;!&ndash;slf4j底层调用log4j包&ndash;&gt;
+        <!--slf4j底层调用log4j包-->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.7.21</version>
-        </dependency>-->
+        </dependency>
         <!--slf4j接管jcl包，使用时需将jcl去掉-->
 
         <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-core -->
@@ -328,6 +335,32 @@
             <artifactId>ehcache</artifactId>
             <version>3.3.1</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/tk.mybatis/mapper -->
+        <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper</artifactId>
+            <version>3.4.2</version>
+        </dependency>
+
+      <!--  <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-all</artifactId>
+            <version>5.15.0</version>
+        </dependency>-->
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-core</artifactId>
+            <version>5.7.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>23.0</version>
+        </dependency>
+
 
         <!-- https://mvnrepository.com/artifact/org.apache.lucene/lucene-core -->
         <dependency>

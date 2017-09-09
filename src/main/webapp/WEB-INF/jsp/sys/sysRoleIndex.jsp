@@ -103,7 +103,7 @@
                     size: "mini",
                     offColor: "danger",
                     onSwitchChange: function (e, data) {
-                        var id = $(this).attr("name")
+                        var id = $(this).attr("name");
                         if (data == true) {
                             data = 1;
                         } else {
@@ -139,7 +139,7 @@
                 if ($(this).prop("checked")) {
                     caseType = $(this).val();
                 }
-            })
+            });
             var param = {
                 pageNumber: params.pageNumber,
                 pageSize: params.pageSize,
@@ -207,7 +207,7 @@
                 valign: 'middle',
                 formatter: function (value, row, index) {
                     //language=HTML
-                    var html
+                    var html;
                     if (value == 0) {
                         html = "<input name='" + row.id + "' class='bootstrap-switch' type='checkbox'/>";
                     } else {
@@ -231,7 +231,7 @@
     });
     $("#item-save").click(function () {
         itemEditOrSave("", editUrl, "70%", "70%");
-    })
+    });
     $("#search").click(searchTable);
     $(".date").datetimepicker(
         {

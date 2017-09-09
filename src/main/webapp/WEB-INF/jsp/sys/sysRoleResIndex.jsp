@@ -46,12 +46,12 @@
         setting.check.chkboxType = {"Y": "ps", "N": "ps"};
         $.fn.zTree.init($("#zTree"), setting, zNodes);
         zTree_Menu = $.fn.zTree.getZTreeObj("zTree");
-    })
+    });
 
     $("#no").on("click", function (e) {
         top.layer.close(top.layer.getFrameIndex(window.name));
         return false;
-    })
+    });
     $("#ok").on("click", function (e) {
         var nodes = zTree_Menu.getCheckedNodes(true);
         var selectIds = "";
@@ -64,11 +64,11 @@
         if(selectIds != "") {
             selectIds = selectIds.substr(0,selectIds.length-1);
         }
-        console.log(selectIds)
+        console.log(selectIds);
         var submitData = {
             "resIds": selectIds,
             "id": "${id}",
-        }
+        };
         $.post("${basePath}/sysRoleRes/save", submitData, function (data) {
             $("#btn_saveOrder").removeAttr("disabled");
             if (data.code == 0) {

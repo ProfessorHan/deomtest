@@ -74,7 +74,7 @@
     $("#no").on("click", function (e) {
         e.preventDefault();
         top.layer.close(topLayer);
-    })
+    });
 
     $(".date").datetimepicker(
         {

@@ -85,18 +85,18 @@
         setting.check.chkboxType = {"Y": "ps", "N": "ps"};
         $.fn.zTree.init($("#zTree"), setting, zNodes);
         zTree_Menu = $.fn.zTree.getZTreeObj("zTree");
-    })
+    });
 
     $("#no").on("click", function (e) {
         top.layer.close(top.layer.getFrameIndex(window.name));
         return false;
-    })
+    });
     var parentLayer = parent.layer.getFrameIndex(window.name);
     var topLayer = top.layer.getFrameIndex(window.name);
     $("#no").on("click", function (e) {
         e.preventDefault();
         top.layer.close(topLayer);
-    })
+    });
 
     $(".date").datetimepicker(
         {
@@ -179,7 +179,7 @@
                 selectIds = selectIds.substr(0, selectIds.length - 1);
             }
             postData+="&roleIds="+selectIds;
-            console.log(postData)
+            console.log(postData);
             $.post('${basePath}/sysUser/saveOrUpdate', postData, function (data) {
                 $btn.removeClass("disabled");
                 if (data.code == 0) {

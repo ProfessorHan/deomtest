@@ -19,16 +19,17 @@ import javax.servlet.http.HttpServletRequest;
  * @Class:IndexController
  */
 @Controller
-@RequestMapping(value = "/")
 public class IndexController {
 
     @Autowired
     private IndexService indexService;
+
     @GetMapping(value = "/")
     public String index(ModelMap modelMap, HttpServletRequest request) {
         SysUser sysUser = SessionUtils.getUser(request);
         String s = indexService.initMenus(sysUser);
         modelMap.addAttribute("menus",s);
         return "index";
+
     }
 }

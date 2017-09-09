@@ -197,4 +197,5 @@
         WHERE sys_user_role.user_id=#{userId}
         ORDER BY sys_role.seq
     </select>
+
 </mapper>

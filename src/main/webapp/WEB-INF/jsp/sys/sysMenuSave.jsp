@@ -97,17 +97,16 @@
     zTree_Menu = $.fn.zTree.getZTreeObj("zTree");
 
     function zTreeOnClick(event, treeId, treeNode) {
-        $("#parentName").val(treeNode.name)
+        $("#parentName").val(treeNode.name);
         $("#parentId").val(treeNode.id)
 //        alert(treeNode.id + ", " + treeNode.name);
-    };
-
+    }
     var parentLayer = parent.layer.getFrameIndex(window.name);
     var topLayer = top.layer.getFrameIndex(window.name);
     $("#no").on("click", function (e) {
         e.preventDefault();
         top.layer.close(topLayer);
-    })
+    });
 
     $(".date").datetimepicker(
         {
