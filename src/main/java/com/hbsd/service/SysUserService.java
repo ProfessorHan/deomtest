@@ -57,8 +57,9 @@ public class SysUserService {
         }
         List<SysUser> sysUsers = sysUserMapper.selectByExample(sysUserExample);
         for (SysUser sysUser : sysUsers) {
-            String roleName = sysUserRoleMapper.selectRoleNameByUserId(sysUser.getId());
-            sysUser.setRoleName(roleName);
+            //todo
+//            String roleName = sysUserRoleMapper.selectRoleNameByUserId(sysUser.getId());
+//            sysUser.setRoleName(roleName);
         }
         PageInfo pageInfo = new PageInfo(sysUsers);
         return pageInfo;
@@ -111,7 +112,8 @@ public class SysUserService {
                 List<Integer> roleIdList = Arrays.stream(roleIds.split(",")).
                         map(Integer::valueOf).distinct().
                         collect(Collectors.toList());
-                sysUserRoleMapper.saveUserRole(userId, roleIdList);
+                //todo
+//                sysUserRoleMapper.saveUserRole(userId, roleIdList);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -148,5 +150,10 @@ public class SysUserService {
     public boolean deleteByPrimaryKey(int id) {
         int i = sysUserMapper.deleteByPrimaryKey(id);
         return i >= 1;
+    }
+    public static void main(String[] args) {
+        Optional<SysUser> sysUser = Optional.of(new SysUser());
+        boolean present = sysUser.isPresent();
+        System.out.println(sysUser);
     }
 }

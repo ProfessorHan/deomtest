@@ -47,7 +47,6 @@
                     </div>
                     <button class="btn btn-success" id="search" style="margin-left: 20px">查询</button>
                     <button class="btn btn-primary" type="reset" style="margin-left: 5px">重置</button>
-                    <button class="btn btn-primary btn-small" id="item-save" style="margin-left: 5px">添加新用户</button>
                 </form>
                 <table id="table"></table>
             </div>

@@ -1,10 +1,12 @@
 package com.hbsd.domain;
 
+import org.hibernate.validator.constraints.Email;
+
 import java.util.Date;
 
 public class SysUser {
     private Integer id;
-
+    @Email
     private String email;
 
     private String pwd;

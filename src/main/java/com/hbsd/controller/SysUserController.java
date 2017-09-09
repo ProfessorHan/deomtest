@@ -107,4 +107,6 @@ public class SysUserController {
         List<ZtreeData> userRoleZtree = sysUserService.getUserRoleZtree(id);
         return userRoleZtree;
     }
+
+
 }
